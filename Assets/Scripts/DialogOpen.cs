@@ -11,6 +11,7 @@ public class DialogOpen : MonoBehaviour
     public bool begin = true;
     public bool end = false;
     private string[] collectibles;
+    private string[] messages;
     private int clue;
 
     private AudioSource greeting;
@@ -20,6 +21,7 @@ public class DialogOpen : MonoBehaviour
     {
         greeting = GetComponent<AudioSource>();
         collectibles = new string[] { "film", "balloons", "life saver", "bull's eye", "crackpipe", "key", "fish", "birdhouse", "red airhorn", "magic hat" };
+        messages = new string[] { "Oh no, my film blew away! Can you find it?", "Oh no, my balloons flew away! Can you catch them?", "Can you please find my life preserver? I cannot afford to drown next time I visit the sea!", "Can you please find my bull's eye? I wish to practice some archery.", "I lost my crackpipe! Please find it quickly, I NEED to smoke crack! asrwriedowferjeojieiofjeoirf", "Oh no, I've lost the key to my house, can you help?", "Oh no, my fish tank rolled away! Can you find it?", "My birdhouse blew away! The birds need to eat, so can you please find it?", "I lost my airhorn! Can you please locate it?", "My magic hat was blown away, can you please find it?" };
         createClue();
     }
 
@@ -31,7 +33,7 @@ public class DialogOpen : MonoBehaviour
 
     public void searchDialog()
     {
-        dialog = "Hi! Can you help me find my " + collectibles[clue] + "?";
+        dialog = messages[clue] ?? ("Hi! Can you help me find my " + collectibles[clue] + "?");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
